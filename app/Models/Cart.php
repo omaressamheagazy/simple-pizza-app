@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
+    public function pizza() {
+        return $this->belongsTo(Pizza::class, 'pizza_id');
+    }
 }

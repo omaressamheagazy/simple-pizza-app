@@ -3,9 +3,6 @@
 @php
     use App\Models\Cart;
 @endphp
-
-
-{{-- {{ dd(Auth::user()) }} --}}
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">

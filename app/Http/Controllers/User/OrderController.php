@@ -26,5 +26,12 @@ class OrderController extends Controller
             return response()->json(['status' => "Added to cart", 'cart-counter' => $cartItem->count()]);
         }
     }
+
+    public function viewOrderSummary($id ) {
+        $checkCart = Cart::all()->where('user_id', $id);
+        $cartDetails = count($checkCart) ? $checkCart : [];
+        return view('order-summary', ['cartDetails' => $cartDetails]);
+
+    }
 }
 

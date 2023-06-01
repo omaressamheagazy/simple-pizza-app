@@ -32,6 +32,7 @@ Route::middleware(['auth', 'verified'])-> prefix('dashboard/order')->group(funct
         order operations
     */
     Route::get('/', [OrderController::class, 'index'])->name('menu');
+    Route::get('/summary/{id}', [OrderController::class, 'viewOrderSummary'])->name("order-summary")->where('id', '[0-9]+');
     Route::post('/add-to-cart', [OrderController::class, 'addToCart'])->name('add-to-cart');
 });
 

@@ -2,6 +2,8 @@
 <html lang="en">
 @php
     use App\Models\Cart;
+    use Illuminate\Support\Facades\Auth;
+    
 @endphp
 
 <head>
@@ -39,10 +41,10 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a href="menu.html" class="nav-link">Menu</a>
+                        <a href="{{ route('menu') }}" class="nav-link">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a href="services.html" class="nav-link">
+                        <a href="{{ route('order-summary', ['id' => Auth::user()->id]) }}" class="nav-link">
                             Cart
                             <sub style="padding: 10" class="cart-counter"> {{ Cart::count() }}</sub>
                         </a>
