@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+@php
+    use App\Models\Cart;
+@endphp
 
 <head>
     <title>Pizza - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet" />
@@ -39,7 +42,10 @@
                         <a href="menu.html" class="nav-link">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a href="services.html" class="nav-link">View cart</a>
+                        <a href="services.html" class="nav-link">
+                            Cart
+                            <sub style="padding: 10" class="cart-counter"> {{ Cart::count() }}</sub>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -49,7 +55,7 @@
     @yield('content')
 
     {{-- footer --}}
-    
+
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
         <svg class="circular" width="48px" height="48px">
@@ -77,6 +83,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="{{ asset('style/js/google-map.js') }}"></script>
     <script src="{{ asset('style/js/main.js') }}"></script>
+    @yield('additional_script')
 </body>
 
 </html>

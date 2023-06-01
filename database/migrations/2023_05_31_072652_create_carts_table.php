@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')
-            ->references('id')->on('orders');
+            $table->foreignId('pizza_id')
+            ->references('id')->on('pizzas');
+            $table->foreignId('user_id')
+            ->references('id')->on('users');
             $table->timestamps();
-            $table->double('price', 8, 2);
         });
     }
 
