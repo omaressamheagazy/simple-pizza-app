@@ -20,7 +20,7 @@
 
                     </center>
                 @endif
-                <section class="ftco-section">
+                <section >
 
                     <div class="container">
                         <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
@@ -49,15 +49,36 @@
                                             </div>
                                             <div class="d-block">
                                                 <p>
-                                                    {{
-                                                        $item->pizza->description
-                                                    }}
+                                                    {{ $item->pizza->description }}
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
+                            <div class="col-md-12">
+                                <div class="pricing-entry d-flex ftco-animate">
+                                    <div class="img"
+                                        style="
+                                            background-image: url(images/pizza-5.jpg);
+                                        ">
+                                    </div>
+                                    <div class="desc pl-3">
+                                        <div class="d-flex text align-items-center">
+                                            <h3><span> <b> Total price </b> </span></h3>
+                                            <span class="price"> <b>{{ $totalPrice }}</b> </span>
+                                        </div>
+                                        <div class="d-block">
+
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+
+                                            <button type="button" class="btn btn-primary px-5 my-4">Pay</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+
 
 
 

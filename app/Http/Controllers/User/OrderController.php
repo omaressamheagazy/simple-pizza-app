@@ -19,19 +19,21 @@ class OrderController extends Controller
         $pizzaID = $request->input('pizza_id');
         $isPizzaExist = Pizza::where('id', $pizzaID)->exists();
         if ($isPizzaExist) { 
-            $cartItem = new Cart();
-            $cartItem->pizza_id = $pizzaID;
-            $cartItem->user_id = Auth::user()->id;
-            $cartItem->save();
+            $cartItem = Cart::create([
+                'pizza_id' => $pizzaID,
+                'user_id' => Auth::user()->id,
+            ]);
             return response()->json(['status' => "Added to cart", 'cart-counter' => $cartItem->count()]);
         }
     }
 
     public function viewOrderSummary($id ) {
-        $checkCart = Cart::all()->where('user_id', $id);
-        $cartDetails = count($checkCart) ? $checkCart : [];
-        return view('order-summary', ['cartDetails' => $cartDetails]);
-
+        $cartDetails = Cart::with('pizza')->where('user_id', $id)->get();
+        $cartDetails = count($cartDetails) ? $cartDetails : [];
+        $totalPrice = $cartDetails->sum(function ($item) {
+            return $item->pizza->price;
+        });
+        return view('order-summary', ['cartDetails' => $cartDetails, 'totalPrice' => $totalPrice]);
     }
 }
 
