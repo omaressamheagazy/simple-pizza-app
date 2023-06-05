@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Auth;
+
 /**
  * 
  *
@@ -16,4 +18,9 @@ function convertMoneyFromCents($centsValue, int $decimalPlaces = 2): float  {
     $currencyValue = $centsValue / $divisionFactor;
     return $currencyValue;
 }
+
+function getCurrentUserId(): string {
+    return Auth::user()->id;
+}
+
 ?>

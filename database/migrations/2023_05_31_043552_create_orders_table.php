@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')
             ->references('id')->on('users');
-            $table->enum('status', ['pending', 'confirmed', 'canceled', 'delivered'])->default('confirmed');
+            $table->enum('status', ['pending',  'canceled', 'delivered', 'paid', 'unpaid'])->default('unpaid');
+            $table->string('session_id');
+            $table->integer('total_price');
             $table->timestamps();
         });
     }

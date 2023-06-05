@@ -72,8 +72,11 @@
 
                                         </div>
                                         <div class="d-flex justify-content-center">
-
-                                            <button type="button" class="btn btn-primary px-5 my-4">Pay</button>
+                                            <form action="{{ route('checkout')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="user_id" value="{{ getCurrentUserId() }}">
+                                                <button type="submit" class="btn btn-primary px-5 my-4">Processed to Checkout </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
