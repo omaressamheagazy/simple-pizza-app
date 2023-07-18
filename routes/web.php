@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\OrderController;
 
 /*
@@ -39,6 +40,10 @@ Route::middleware(['auth', 'verified'])-> prefix('dashboard/order')->group(funct
     Route::get('/cancel', [OrderController::class, 'cancel'])->name('checkout.cancel');
     
 });
+
+// Auth::routes([
+//     'verify' => true
+// ]);
 
 require __DIR__.'/auth.php';
 
