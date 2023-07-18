@@ -20,7 +20,7 @@ class OrderController extends Controller
         return view('order', ['pizzas' => $pizzas]);
     }
 
-    public function addToCart()
+    public function addToCart(Request $request)
     {
         $pizzaID = $request->input('pizza_id');
         $isPizzaExist = Pizza::where('id', $pizzaID)->exists();
