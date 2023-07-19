@@ -59,7 +59,7 @@
                 });
                 $.ajax({
                     type: "POST",
-                    url: "order/add-to-cart",
+                    url: "add-to-cart",
                     data: {
                         'pizza_id': pizzaID
                     },

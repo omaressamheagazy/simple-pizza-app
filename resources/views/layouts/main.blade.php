@@ -49,9 +49,25 @@
                             <sub style="padding: 10" class="cart-counter"> {{ Cart::count() }}</sub>
                         </a>
                     </li>
+
                 </ul>
             </div>
-        </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Setting
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
+                    {{-- <div class="dropdown-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="button" class="btn btn-light">Logout</button>
+                            </ </div>
+                    </div> --}}
+                </div>
+            </div>
+
     </nav>
     <!-- END nav -->
     @yield('content')

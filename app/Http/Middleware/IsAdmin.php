@@ -16,7 +16,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (! $request->user()->isAdmin) {
-            return redirect()->route('dashboard'); // Replace 'home' with the actual route name for your home page
+            return redirect()->route('menu'); // Replace 'home' with the actual route name for your home page
         }
         return $next($request);
     }
