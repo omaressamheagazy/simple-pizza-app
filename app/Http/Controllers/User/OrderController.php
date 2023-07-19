@@ -9,6 +9,8 @@ use App\Models\Pizza;
 use Doctrine\DBAL\Schema\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
@@ -36,7 +38,7 @@ class OrderController extends Controller
     public function viewOrderSummary($id)
     {
         $cartDetails = Cart::with('pizza')->where('user_id', $id)->get();
-        $cartDetails = count($cartDetails) ? $cartDetails : [];
+        if(empty(count($cartDetails))) return  Redirect::route('menu'); // if there no items in the cart, redirect the user to the homepage
         $totalPrice = $cartDetails->sum(function ($item) {
             return $item->pizza->price;
         });
@@ -95,6 +97,7 @@ class OrderController extends Controller
             if ($order->status === 'unpaid') {
                 $order->status = 'paid';
                 $order->save();
+                Cart::empty($order->user_id); // delete all the user items in the cart
             }
             return view('order-success');
         } catch (\Throwable $th) {

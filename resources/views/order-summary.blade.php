@@ -6,21 +6,8 @@
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
-                {{-- <div class="col-md-7 heading-section ftco-animate text-center">
-                    <h2 class="mb-4">Our Menu</h2>
-                    <p>
-                        Far far away, behind the word mountains, far from
-                        the countries Vokalia and Consonantia, there live
-                        the blind texts.
-                    </p>
-                </div> --}}
-                @if (empty($cartDetails))
-                    <center>
-                        <h1>Cart is empty</h1>
 
-                    </center>
-                @endif
-                <section >
+                <section>
 
                     <div class="container">
                         <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
@@ -72,15 +59,16 @@
 
                                         </div>
                                         <div class="d-flex justify-content-center">
-                                            <form action="{{ route('checkout')}}" method="POST">
+                                            <form action="{{ route('checkout') }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="user_id" value="{{ getCurrentUserId() }}">
-                                                <button type="submit" class="btn btn-primary px-5 my-4">Processed to Checkout </button>
+                                                <button type="submit" class="btn btn-primary px-5 my-4">Processed to
+                                                    Checkout </button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                            </div>  
+                            </div>
 
 
 

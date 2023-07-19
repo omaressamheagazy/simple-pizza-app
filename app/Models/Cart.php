@@ -13,4 +13,7 @@ class Cart extends Model
     public function pizza() {
         return $this->belongsTo(Pizza::class, 'pizza_id');
     }
+    public static function empty($userID) {
+        self::where('user_id', $userID)->delete();
+    }
 }
