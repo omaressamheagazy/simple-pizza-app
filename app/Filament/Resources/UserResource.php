@@ -8,6 +8,7 @@ use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Hash;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Forms\Components\Select;
@@ -34,15 +35,18 @@ class UserResource extends Resource
                             ->required(),
                         TextInput::make('email')->label(__('Email'))
                             ->email()
+                            ->unique(ignoreRecord: true)
                             ->required(),
                         TextInput::make('password')->label(__('Password'))
                             ->password()
-                            ->autocomplete('new-password')
-                            ->required(),
+                            ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                            ->dehydrated(fn ($state) => filled($state))
+                            ->required(fn (string $context): bool => $context === 'create')
+                            ->autocomplete('new-password'),
                         Select::make('isAdmin')->label(__('Role'))
                             ->options([
-                                '0' => 'Normal User',
-                                '1' => 'Admin',
+                                false => 'Normal User',
+                                true => 'Admin',
                             ])
                             ->required(),
                     ])
@@ -58,7 +62,11 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->sortable(),
                 Tables\Columns\TextColumn::make('email')->sortable(),
-                TextColumn::make('created_at')->dateTime()
+                TextColumn::make('isAdmin')->enum([
+                    false => "Normal User",
+                    true => "Admin"
+                ]),
+                TextColumn::make('created_at')->dateTime(),
 
             ])
             ->filters([
