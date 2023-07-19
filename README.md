@@ -3,7 +3,7 @@
 
 A simple pizza application designed with the highest security standards
 
-![hompage](https://github.com/omaressamheagazy/simple_secured_app/assets/68665060/6b8f0fd9-324a-49ef-b19c-58a466dac256)
+![hompage](https://github.com/omaressamheagazy/simple-pizza-app/assets/68665060/c36546f0-31a6-4db0-a383-523774b8cb2a)
 ![admin_dashboard](https://github.com/omaressamheagazy/simple_secured_app/assets/68665060/9504e876-549f-44b5-96d6-3a24b5211cb3)
 ![admin_user_list](https://github.com/omaressamheagazy/simple_secured_app/assets/68665060/1c93327e-864d-41d1-bc73-b35d395839e6)
 
