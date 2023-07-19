@@ -141,8 +141,8 @@ return [
         'path' => app_path('Filament/Widgets'),
         'register' => [
             Widgets\AccountWidget::class,
-            Widgets\FilamentInfoWidget::class,
         ],
+        
     ],
 
     /*
@@ -169,7 +169,7 @@ return [
     | and dark appearance for the admin panel, or let their system decide.
     |
     */
-
+    
     'dark_mode' => false,
 
     /*
