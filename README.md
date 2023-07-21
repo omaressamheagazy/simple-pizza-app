@@ -50,6 +50,8 @@ create the database tables and entries
 
 ```bash
   php artisan migrate
+  php artisan db:seed
+
 ```
 
 Start the server
